@@ -22,7 +22,7 @@ header {
   background-color: #7025fb;
   color: white;
   font-family: Nunito;
-  height: 9%;
+  height: 8%;
   align-items: center;
   font-size: 1rem;
 }
@@ -83,4 +83,40 @@ header svg {
 .right_content button svg {
   height: 2rem;
   margin-left: 0.5em;
+}
+
+/*-------------------------------------------- left part, second page -----------------------------------*/
+.hidden {
+  display: none;
+}
+
+.left_content_page2 {
+  width: 50%;
+  height: 100vh;
+}
+
+.background_img_page2 {
+  background-image: url("/imgs/background_img_page2.png");
+  background-size: cover;
+  background-position-x: 20%;
+  background-position-y: 20%;
+  height: 92%;
+}
+
+.first_quote_container {
+  width: 55%;
+  text-transform: uppercase;
+  font-family: "Nunito";
+  font-style: italic;
+  font-size: 0.8rem;
+  color: #212529;
+  line-height: 3rem;
+  position: absolute;
+  top: 27%;
+  left: 8%;
+}
+
+.author {
+  color: #e5e6e8;
+  line-height: 4rem;
 }
