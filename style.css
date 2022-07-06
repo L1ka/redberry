@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main_container {
+  display: flex;
+}
+
+/*-------------------------------------------- left part, first page -----------------------------------*/
+
+.left_content {
+  background-image: url("/imgs/Landing\ page-\ scrolling\ photo.png");
+  background-size: cover;
+  width: 50%;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  background-color: #7025fb;
+  color: white;
+  font-family: Nunito;
+  height: 9%;
+  align-items: center;
+  font-size: 1rem;
+}
+
+header svg {
+  width: 1rem;
+  margin-right: 0.5em;
+  margin-left: 4em;
+}
+
+/*-------------------------------------------- left part, first page -----------------------------------*/
+
+.right_content {
+  width: 50%;
+  height: 100vh;
+  background-color: #fd5334;
+}
+
+.right_content h1 {
+  color: white;
+  font-family: "Nunito";
+  text-transform: uppercase;
+  font-size: 5rem;
+  margin: 3em 2em 0 1em;
+}
+
+.right_content h1 span {
+  color: black;
+  font-style: bold;
+  font-size: 1.5rem;
+  display: flex;
+  margin-left: 73%;
+  margin-top: -3em;
+  margin-bottom: 3em;
+  text-align: center;
+}
+
+.right_content button {
+  border: 3px solid #212529;
+  margin-left: 3.5em;
+  margin-top: 4em;
+  width: 15rem;
+  display: flex;
+  padding: 0.5em;
+  justify-content: center;
+  color: white;
+  background-color: #212529;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Open Sans";
+  font-size: 1.5rem;
+}
+
+.right_content button:hover {
+  border-color: rgba(194, 165, 249, 0.8);
+}
+
+.right_content button svg {
+  height: 2rem;
+  margin-left: 0.5em;
+}
