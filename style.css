@@ -77,7 +77,7 @@ header svg {
 }
 
 .right_content button:hover {
-  border-color: rgba(194, 165, 249, 0.8);
+  border-color: #c2a5f9;
 }
 
 .right_content button svg {
@@ -119,4 +119,152 @@ header svg {
 .author {
   color: #e5e6e8;
   line-height: 4rem;
+}
+
+/*-------------------------------------------- right part - personal info, second page  -----------------------------------*/
+
+.right_content_page2 {
+  width: 50%;
+  height: 100vh;
+}
+
+.right_header {
+  height: 8%;
+  border-bottom: Solid rgba(185, 180, 195, 0.3);
+  color: #212529;
+  font-family: "Open Sans";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 3rem;
+}
+
+.number_in_squares {
+  display: flex;
+  margin-top: 3rem;
+  margin-left: 7rem;
+}
+.one {
+  border: solid #e5e6e8;
+  border-radius: 6px;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.two {
+  border: solid #e5e6e8;
+  border-radius: 6px;
+  background-color: #f5f5f5;
+  color: #95939a;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -40rem;
+}
+
+.right_content_page2 svg {
+  stroke: Solid rgba(185, 180, 195, 0.3);
+}
+
+.two_part_title {
+  display: flex;
+  justify-content: baseline;
+  margin: 0rem 3.5rem;
+  font-family: "Open Sans";
+}
+
+.part_one {
+  margin-right: 5rem;
+}
+
+.form_title {
+  margin-top: 7rem;
+  margin-left: 3rem;
+  line-height: 2rem;
+  font-family: "Open Sans";
+}
+
+.form_title h4 {
+  color: #95939a;
+  margin-top: 1rem;
+}
+
+.form_personal_info div {
+  margin: 3rem;
+}
+
+input {
+  width: 85%;
+  border: none;
+  border-bottom: solid 0.1px;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+input:hover {
+  background-color: rgba(190, 185, 185, 0.125);
+}
+input:hover::placeholder {
+  color: rgba(24, 13, 13, 0.397);
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input:focus {
+  background-color: rgba(0, 0, 0, 0.125);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.back_and_next_btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.previous_page {
+  font-family: "Open Sans";
+  margin: 3rem;
+  padding: 0.8rem 1.5rem;
+
+  border-radius: 8px;
+  font-size: 1.5rem;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.previous_page:hover {
+  background-color: #c2a5f9;
+}
+
+.next_page {
+  height: 4rem;
+  width: 9rem;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  background-color: #212529;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 13rem;
+  cursor: pointer;
+  border: 4px solid;
+}
+
+.next_page:hover {
+  border: solid #c2a5f9;
+}
+
+.next_page svg {
+  height: 1.5rem;
+  margin-left: 0.7rem;
 }
