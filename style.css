@@ -360,3 +360,16 @@ input:focus {
   height: 1.5rem;
   margin-left: 0.7rem;
 }
+
+/*-------------------------------------------- left part, third page -----------------------------------*/
+
+.background_img_page3 {
+  background-image: url("/imgs/background_img_page3.png");
+  background-size: cover;
+  height: 92%;
+}
+
+.author {
+  color: #093f68;
+  line-height: 4rem;
+}
