@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Open Sans";
+  color: #212529;
 }
 
 .main_container {
@@ -187,6 +189,96 @@ header svg {
   margin-left: 3rem;
   line-height: 2rem;
   font-family: "Open Sans";
+}
+
+.form_title h4 {
+  color: #95939a;
+  margin-top: 1rem;
+}
+
+.form_personal_info div {
+  margin: 3rem;
+}
+
+input {
+  width: 85%;
+  border: none;
+  border-bottom: solid 0.1px;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+input:hover {
+  background-color: rgba(190, 185, 185, 0.125);
+}
+input:hover::placeholder {
+  color: rgba(24, 13, 13, 0.397);
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input:focus {
+  background-color: rgba(0, 0, 0, 0.125);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.back_and_next_btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.previous_page {
+  font-family: "Open Sans";
+  margin: 3rem;
+  padding: 0.8rem 1.5rem;
+
+  border-radius: 8px;
+  font-size: 1.5rem;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.previous_page:hover {
+  background-color: #c2a5f9;
+}
+
+.next_page {
+  height: 4rem;
+  width: 9rem;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  background-color: #212529;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 13rem;
+  cursor: pointer;
+  border: 4px solid;
+}
+
+.next_page:hover {
+  border: solid #c2a5f9;
+}
+
+.next_page svg {
+  height: 1.5rem;
+  margin-left: 0.7rem;
+}
+
+/*-------------------------------------------- right part - personal info, second page  -----------------------------------*/
+
+.two {
+  background-color: none;
+}
+
+.right_content_page2 svg {
+  stroke: Solid rgba(185, 180, 195, 0.3);
 }
 
 .form_title h4 {
