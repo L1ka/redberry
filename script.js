@@ -95,5 +95,57 @@ const validation = async function () {
       errBoxCheck();
     }
   };
+
+  //EVENT LISTENERS
+
+  //// INPUT VALIDATION FOR ALL FOUR INPUT
+
+  inputOne.addEventListener("change", (e) => {
+    inputValidation(
+      inputOne,
+      "Invalid Name",
+      "Please enter valid name",
+      inputOne.value.length < 2
+    );
+  });
+
+  inputTwo.addEventListener("change", () => {
+    inputValidation(
+      inputTwo,
+      "Invalid email",
+      "Please enter valid email address",
+      !inputTwo.value.match(new RegExp("[a-z0-9]+@redberry.ge"))
+    );
+  });
+
+  inputThree.addEventListener("change", () => {
+    inputValidation(
+      inputThree,
+      "Invalid Phone Number",
+      "Please enter valid phone number",
+      inputThree.value.length !== 9 ||
+        inputThree.value.match(new RegExp(/[^0-9]/, "g"))
+    );
+  });
+
+  inputFour.addEventListener("change", () => {
+    // splits date value into separate elements for month, day and year
+    const strg = inputFour.value.split("-");
+    const mm = parseInt(strg[1]);
+    const dd = parseInt(strg[2]);
+    const yy = parseInt(strg[0]);
+    // variables for invalid input types to be checked
+    const empty = !(mm || dd || yy);
+    const startsWithZero = Number(strg[0][0]) === 0;
+    const minLength = strg[0].length === 4;
+    const maxYear = 2022;
+
+    inputValidation(
+      inputFour,
+      "Invalid date format!",
+      "Please enter valid date",
+      empty || startsWithZero || !minLength || yy > maxYear
+    );
+  });
 };
 validation();
