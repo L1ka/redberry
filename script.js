@@ -294,6 +294,17 @@ li.forEach((li) =>
   })
 );
 
+inputContainer.forEach((input) => {
+  input.addEventListener("click", function (e) {
+    const curLabel = e.target.closest("div").querySelector("label");
+    const curInput = e.target.closest("div").querySelector("input");
+    if (!curLabel) return;
+    curLabel.classList.add("hidden");
+
+    curInput.focus();
+  });
+});
+
 //GET DATA FROM API
 const getData = async function (url) {
   const res = await fetch(url);
