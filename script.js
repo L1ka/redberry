@@ -52,5 +52,48 @@ const validation = async function () {
     const errBox = document.querySelector(".error");
     if (errBox) errBox.classList.add("hidden");
   };
+
+  // TAKES FOUR ARGUMENTS FOR INPUT , ERROR TYPE, ERROR MESSAGE AND INVALID CONDITIONS
+  const inputValidation = function (input, type, message, condition) {
+    // 1) CHECKS IF AN INPUT IS INVALID
+    if (condition) {
+      // 2) CHECKS IF ERROR BOX WAS ALREADY RENDERED AND REMOVES IT
+      errBoxCheck();
+
+      // 3) RENDERS ERROR
+      renderInputError(input);
+      renderErrBox(type, message);
+
+      // 4) ADDS EVENT LISTENER ON ERROR BOX AND ON CLICK REMOVES IT
+      const errBox = document.querySelector(".error");
+      errBox.addEventListener("click", function () {
+        errBox.classList.add("hidden");
+      });
+    } else {
+      // 5) IF USER TYPED VALID INPUT REMOVES ERRORS AND INSERTS CHECK MARTK
+
+      // CHECK MARTK
+      const markup = `
+      <img class='validation_check' src="/imgs/check.svg" alt="" />
+      `;
+      input.insertAdjacentHTML("afterend", markup);
+
+      // INDEX FOR THE NEXT INPUT TO MOVE FOCUS
+      const index = Number(input.classList[1]) + 1;
+
+      Array.from(persInfoForm.querySelectorAll("input")).forEach((el) => {
+        const i = Number(el.classList[1]);
+
+        if (i === index) {
+          el.focus();
+          el.closest("div").querySelector("label").remove();
+        }
+      });
+
+      // REMOVE ERR STYLES AND POP UP
+      removeInputErr(input);
+      errBoxCheck();
+    }
+  };
 };
 validation();
