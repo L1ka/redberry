@@ -75,50 +75,50 @@
           <h3 class="part_one">Personal information</h3>
           <h3 class="part_two">Chess experience</h3>
         </div>
+
         <div class="form_title">
           <h1>Personal information</h1>
           <h4>This is Basic Informaton Fields</h4>
         </div>
-        <div class="form_personal_info">
-          <div>
+        <form class="form_personal_info">
+          <div class="input-required">
+            <label>
+              <span class="first-letter">Name &nbsp;</span>
+              <span class="second-letter">*</span>
+            </label>
+            <input type="text" name="name" id="name" class="input-text 1" />
+          </div>
+          <div class="input-required">
+            <label>
+              <span class="first-letter">Email address &nbsp;</span>
+              <span class="second-letter">*</span>
+            </label>
+            <input type="email" name="email" id="email" class="input-text 2" />
+          </div>
+          <div class="input-required">
+            <label>
+              <span class="first-letter">Phone number &nbsp;</span>
+              <span class="second-letter">*</span>
+            </label>
+            <input type="tel" name="phone" id="tel" class="input-text 3" />
+          </div>
+          <div class="input-required">
+            <label>
+              <span class="first-letter">Date of birth &nbsp;</span>
+              <span class="second-letter">*</span>
+            </label>
             <input
               type="text"
-              name="name"
-              id="name"
-              required
-              placeholder="Name *"
-            />
-          </div>
-          <div>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email address *"
-              required
-            />
-          </div>
-          <div>
-            <input
-              type="tel"
-              name="tel"
-              id="tel"
-              placeholder="Phone number *"
-              required
-            />
-          </div>
-          <div>
-            <input
-              type="date"
-              name="date"
+              name="date_of_birth"
               id="date"
-              placeholder="Date of birth *"
-              required
+              class="input-text 4"
+              onfocus="(this.type='date' )"
+              onblur="(this.type='text' )"
             />
           </div>
-        </div>
+        </form>
         <div class="back_and_next_btns">
-          <button class="previous_page">Back</button>
+          <button class="previous_page first_back_btn">Back</button>
           <button class="next_page">
             Next
             <img src="/imgs/get started arrow.svg" alt="" />
@@ -157,14 +157,16 @@
             <h3>2</h3>
           </div>
         </div>
-        <div class="two_part_title">
+        <div class="two_part_title err_container">
           <h3 class="part_one">Personal information</h3>
           <h3 class="part_two">Chess experience</h3>
         </div>
+
         <div class="form_title">
           <h1>Chess experience</h1>
           <h4>This is Basic Informaton Fields</h4>
         </div>
+
         <div class="dropdown">
           <div class="level">
             <button>
@@ -176,10 +178,13 @@
                 class="hidden up_arrow_level"
               />
             </button>
+
             <ul class="hidden level_ul">
-              <li class="active">Beginner</li>
-              <li>Intermediate</li>
-              <li>Professional</li>
+              <li class="active">
+                <option value="beginner">beginner</option>
+              </li>
+              <li><option value="normal">normal</option></li>
+              <li><option value="professional">professional</option></li>
             </ul>
           </div>
           <div class="character">
@@ -187,11 +192,7 @@
               <p class="character_list_title">
                 Choose your character <h7>*</h7>
               </p>
-              <img
-                src="/imgs/down arrow.svg"
-                alt=""
-                class="down_arrow_character"
-              />
+              <img src="/imgs/down arrow.svg" class="down_arrow_character" />
               <img
                 src="/imgs/up arrow.svg"
                 alt=""
@@ -200,29 +201,42 @@
             </button>
             <ul class="hidden character_ul">
               <p>(Total 4)</p>
-              <li>
-                <h8>Magnus Carlsen</h8> <img src="/imgs/character 1.png" />
-              </li>
-              <li>Wilhelm Steinitz <img src="/imgs/character 2.png" /></li>
-              <li>Bobby Fischer <img src="/imgs/character 3.png" /></li>
-              <li>Bobby Fischer <img src="/imgs/character 4.png" /></li>
+              <li class="onee"><img alt="nona" /></li>
+              <li class="twoo"><img /></li>
+              <li class="three"><img /></li>
+              <li class="four"><img /></li>
             </ul>
           </div>
         </div>
+
         <div class="participation_status">
           <p>Have you participated in the Redberry Championship? <h7>*</h7></p>
           <form action="">
-            <input type="radio" id="" name="status" value="Yes" />
+            <input type="radio" id="radio_yes" name="status" value="Yes" />
             <label for="Yes">Yes</label>
-            <input type="radio" id="" name="status" value="No" />
+            <input type="radio" id="radio_no" name="status" value="No" />
             <label for="No">No</label>
           </form>
         </div>
 
         <div class="back_and_next_btns">
-          <button class="previous_page">Back</button>
-          <button class="next_page">Done</button>
+          <button class="previous_page back_btn">Back</button>
+          <button class="next_page_2">Done</button>
         </div>
+      </div>
+    </div>
+
+    <!------------------------------------ page fourth----------------------------------->
+
+    <div class="main_container page4 hidden">
+      <div class="left_content_page4">
+        <header>
+          <img src="/imgs/redberry logo.svg" alt="" />
+          <h1>Redberry Knight Cup</h1>
+        </header>
+      </div>
+      <div class="right_content_page2">
+        <img src="/imgs/Onboarding completed!.png" alt="" />
       </div>
     </div>
   </body>
