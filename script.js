@@ -388,3 +388,94 @@ backBtn.addEventListener("click", function () {
   thirdPageContainer.classList.add("hidden");
   secondPageContainer.classList.remove("hidden");
 });
+
+const radioYes = document.getElementById("radio_yes");
+const radioNo = document.getElementById("radio_no");
+const container = document.querySelector(".err_container");
+let charSelected = false;
+let levelSelected = false;
+
+// ON DONE BTN CHECKS VALIDATION
+// SAND DATA TO SERVER
+// CLEAR LOCAL STPRAGE
+// IF INVALID POP UP ERROR
+doneBtn.addEventListener("click", function () {
+  if (characterListTitle.classList.contains("selected_character"))
+    charSelected = true;
+
+  if (levelListTitle.classList.contains("selected_level")) levelSelected = true;
+
+  // FOR ERROR POP-UP
+  const renderErrBox = function (type, message) {
+    const markup = `
+      <div class="error">
+        <img class="mark" src="/imgs/exclamation mark.svg" alt="" />
+        <span class="err_type">${type}</span>
+        <img class="close" src="/imgs/close.svg" alt="" />
+        <p class="err_message">${message}</p>
+      </div>
+    `;
+    container.insertAdjacentHTML("afterBegin", markup);
+  };
+
+  // CHECKS IF EVERY REQUIRED FIELD IS FILLED
+  if (charSelected && levelSelected && (radioYes.checked || radioNo.checked)) {
+    const one = document.querySelector(".selected_level").textContent.trim();
+
+    const two = Number(document.querySelector(".selected").id);
+
+    let three = "";
+    if (radioYes.checked) three = true;
+    if (radioNo.checked) three = false;
+
+    // GENERATES DATA FROM CHESS PAGE AND WITH PERSONAL INFO DATA OBJECT MAKES NEW OBJECT TO SEND ON SERVER
+    const obj2 = {
+      experience_level: one,
+      already_participated: three,
+      character_id: two,
+    };
+    const dataFormated = JSON.stringify(obj2);
+    localStorage.setItem("lika2", dataFormated);
+    const dataforuse = JSON.parse(localStorage.getItem("lika2"));
+    const obj1 = JSON.parse(localStorage.getItem("lika"));
+    Object.assign(obj1, obj2);
+
+    // POST API CALL
+    const sendJSON = async function (url, data) {
+      try {
+        const fetchData = fetch(url, {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const res = await fetchData;
+        const resData = await res.json();
+        return resData;
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    sendJSON(`https://chess-tournament-api.devtest.ge/api/register`, obj1);
+
+    //////////////////////////////
+    // GOES TO WELCOME PAGE AND CLEARS LOCAL STORAGE
+    thirdPageContainer.classList.add("hidden");
+    fourthPageContainer.classList.remove("hidden");
+    if (!fourthPageContainer.classList.contains("hidden")) {
+      localStorage.clear();
+    }
+  } else {
+    // IF SOME INVALID INPUTS EXIST RENDERS ERR POP UP AND ADDS EVENT LISTENER TO REMOVE ON CLICK
+
+    renderErrBox("Required field", "Please select all required fields");
+
+    const errBoxCheck = document.querySelector(".error");
+
+    errBoxCheck.addEventListener("click", function () {
+      errBoxCheck.remove();
+    });
+  }
+});
