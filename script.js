@@ -210,3 +210,14 @@ const validation = async function () {
   });
 };
 validation();
+
+// GOING BACK FROM PERSONAL INFO PAGE
+firstBackBtn.addEventListener("click", function () {
+  firstPageContainer.classList.remove("hidden");
+  secondPageContainer.classList.add("hidden");
+});
+
+// DISABLE TAB KEY
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Tab") e.preventDefault();
+});
