@@ -4,6 +4,30 @@ const firstPageContainer = document.querySelector(".page1");
 const secondPageContainer = document.querySelector(".page2");
 const thirdPageContainer = document.querySelector(".page3");
 const inputs = document.querySelectorAll("input");
+
+const firstBackBtn = document.querySelector(".first_back_btn");
+const fourthPageContainer = document.querySelector(".page4");
+const nextBtn = document.querySelector(".next_page");
+
+const doneBtn = document.querySelector(".next_page_2");
+const ulLevel = document.querySelector(".level_ul");
+
+const li = document.querySelectorAll("li");
+const activeLi = document.querySelector(".active");
+const levelInfoDropdown = document.querySelector(".level");
+const characterDropdown = document.querySelector(".character");
+const dropdownContainer = document.querySelector(".dropdown");
+const levelListTitle = document.querySelector(".level_list_title");
+const characterListTitle = document.querySelector(".character_list_title");
+const downArrowLevel = document.querySelector(".down_arrow_level");
+const downArrowCharacter = document.querySelector(".down_arrow_character");
+const upArrowLevel = document.querySelector(".up_arrow_level");
+const upArrowCharacter = document.querySelector(".up_arrow_character");
+const test = document.querySelector(".form_personal_info");
+const inputContainer = document.querySelectorAll(".input-required");
+
+const labels = document.querySelectorAll("label");
+
 //Event Listeners
 
 // listens to the click on first page's get started button, clears existing content and renders next page
@@ -221,3 +245,51 @@ firstBackBtn.addEventListener("click", function () {
 document.addEventListener("keydown", function (e) {
   if (e.key === "Tab") e.preventDefault();
 });
+
+//SHOWS AND HIDES DROPDOWN FOR EXPERIENCE LEVEL  ON CLICK
+levelInfoDropdown.addEventListener("click", () => {
+  ulLevel.classList.toggle("hidden");
+});
+
+//ON CLICK ON DROPDOWNS RENDERS SELECTED OPTION
+li.forEach((li) => {
+  li.addEventListener("click", (e) => {
+    const clicked = e.target.closest(".level");
+
+    if (clicked) {
+      levelListTitle.textContent = li.textContent;
+      levelListTitle.classList.add("selected_level");
+
+      return;
+    }
+    characterListTitle.textContent = li.textContent;
+    characterListTitle.classList.add("selected_character");
+    li.classList.add("selected");
+  });
+});
+
+// FOR CLICK ON DROPDOWNS CHANGES UP AND DOWN ARROWS
+dropdownContainer.addEventListener("click", function (e) {
+  const clickedLevel = e.target.closest(".level");
+  const clickedCharacter = e.target.closest(".character");
+
+  if (clickedLevel) {
+    downArrowLevel.classList.toggle("hidden");
+    upArrowLevel.classList.toggle("hidden");
+    return;
+  }
+  if (clickedCharacter) {
+    downArrowCharacter.classList.toggle("hidden");
+    upArrowCharacter.classList.toggle("hidden");
+  }
+});
+
+// REMOVES DEFAULT ACTIVE STYLE ON EXPERIENCE BEGINNER OPTION
+li.forEach((li) =>
+  li.addEventListener("mouseover", (e) => {
+    if (!li.classList.contains(".active")) {
+      activeLi.classList.remove("active");
+      li.removeEventListener("click", this);
+    }
+  })
+);
