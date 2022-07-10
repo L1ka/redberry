@@ -330,3 +330,61 @@ const renderUl = async function () {
 };
 
 renderUl();
+
+const backBtn = document.querySelector(".back_btn");
+
+//TO GO BACK TO PERS INFO PAGE
+//BEFORE LEAVING PAGE, SAVES EXISTING USER INPUTS IN LOCAL STORAGE LIKA2
+//ALSO SAVES SELECTED CLASS NAMES TO  FIND ACTIVE FIELDS AFTER PAGE REFRESH LIKA3
+backBtn.addEventListener("click", function () {
+  //THREE OPTION TYPES (LEVEL, CHARACTER, RADIO BUTTON)
+  const one = document.querySelector(".selected_level")?.textContent.trim();
+  const two = Number(document.querySelector(".selected")?.id);
+  console.log(typeof one);
+  let three = "";
+  if (radioYes.checked) three = true;
+  if (radioNo.checked) three = false;
+
+  // PUSHING ACTIVE CLASSES IN ARR
+  let arr = [];
+  if (one) {
+    arr.push("selected_level");
+  }
+
+  if (two) {
+    arr.push("selected_character");
+  }
+  // SAVEING ACTIVE CLASSES IN LOCALSTORAGE
+  const dataFormated1 = JSON.stringify(arr);
+  localStorage.setItem("lika3", dataFormated1);
+
+  // IF THERE IS NO INPUT YET , FROM USER
+  if (!one && !two && !three) {
+    thirdPageContainer.classList.add("hidden");
+
+    secondPageContainer.classList.remove("hidden");
+    return;
+  }
+
+  // OBJ2 OBJECT WILL CONTAIN USER SELECTED FIELDS
+  const obj2 = {
+    experience_level: "",
+    already_participated: three,
+    character_id: two,
+  };
+
+  if (one) {
+    obj2.experience_level = one;
+  } else {
+    obj2.experience_level = levelListTitle.textContent;
+  }
+
+  // SAVES EXISTING USER INPUTS IN LOCAL STORAGE
+  const dataFormated = JSON.stringify(obj2);
+  console.log(dataFormated, obj2);
+  localStorage.setItem("lika2", dataFormated);
+
+  // GO TO PERS INFO PAGE
+  thirdPageContainer.classList.add("hidden");
+  secondPageContainer.classList.remove("hidden");
+});
