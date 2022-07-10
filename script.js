@@ -293,3 +293,40 @@ li.forEach((li) =>
     }
   })
 );
+
+//GET DATA FROM API
+const getData = async function (url) {
+  const res = await fetch(url);
+  const data = await res.json();
+
+  return data;
+};
+
+// RENDERS UL LIST DROP DOWN WITH API DATA
+const renderUl = async function () {
+  const data = await getData(
+    `https://chess-tournament-api.devtest.ge/api/grandmasters`
+  );
+
+  const ulCharacter = document.querySelector(".character_ul");
+  const arr = Array.from(ulCharacter.querySelectorAll("li"));
+  const arr2 = Array.from(ulCharacter.querySelectorAll("img"));
+
+  //FOR NAME AND ID INSERT
+  arr.forEach((_, i) => {
+    arr[i].textContent = data[i].name;
+    arr[i].id = data[i].id;
+  });
+
+  // FOR IMAGE INSERTING
+  arr2.forEach((_, i) => {
+    arr2[i].src = data[i].image;
+  });
+
+  // ON KLICK SHOWS OR HIDES CHARACTER DROPDOWN
+  characterDropdown.addEventListener("click", () => {
+    ulCharacter.classList.toggle("hidden");
+  });
+};
+
+renderUl();
