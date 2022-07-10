@@ -2,7 +2,8 @@
 const btnStart = document.querySelector(".btn_start");
 const firstPageContainer = document.querySelector(".page1");
 const secondPageContainer = document.querySelector(".page2");
-
+const thirdPageContainer = document.querySelector(".page3");
+const inputs = document.querySelectorAll("input");
 //Event Listeners
 
 // listens to the click on first page's get started button, clears existing content and renders next page
@@ -146,6 +147,66 @@ const validation = async function () {
       "Please enter valid date",
       empty || startsWithZero || !minLength || yy > maxYear
     );
+  });
+
+  // ADD EVENT LISTENER ON NEXT BUTTON AND ON CLICK CHECKS VALIDATION TO BE PASSED
+  nextBtn.addEventListener("click", () => {
+    //CONDITIONS IF PERSONAL INFO CONTAINS ERROR OR INPUTS ARE EMPTY
+    const error = Array.from(inputs).some((el) => el.classList.contains("err"));
+    const empty = Array.from(inputs).some((el) => !el.value);
+
+    //IF THERE IS AN ERROR CHECK WHICH INPUT IS INVALID AND RENDERS SPECIFIC ERROR
+    inputs.forEach((input) => {
+      const condition = input.classList.contains("err");
+      if (condition || !input.value) {
+        if (Number(input.classList[1]) === 1) {
+          errBoxCheck();
+          renderErrBox("Invalid Name", "Please enter valid name");
+        }
+        if (Number(input.classList[1]) === 2) {
+          errBoxCheck();
+          renderErrBox("Invalid email", "Please enter valid email address");
+        }
+        if (Number(input.classList[1]) === 3) {
+          errBoxCheck();
+          renderErrBox(
+            "Invalid Phone Number",
+            "Please enter valid phone number"
+          );
+        }
+        if (Number(input.classList[1]) === 4) {
+          errBoxCheck();
+          renderErrBox("Invalid date format!", "Please enter valid date");
+        }
+        errBoxCheck();
+        renderErrBox("required field", "Please fill in the required fields");
+      }
+      //IF THERE IS NO INVALID INPUTS GENERATES FORM DATA AND MAKES OBJECT WITH USER INPUTS
+      //THAN SAVES OBJECT IN LOCAL STORAGE
+      if (!error && !empty) {
+        //CREATE OBJECT FROM FORM DATA
+        const obj = {};
+        const data = new FormData(persInfoForm);
+        let arr1 = [...data.keys()];
+        let arr2 = [];
+
+        for (let key of data.keys()) {
+          arr2.push(data.get(key));
+        }
+
+        arr1.forEach((element, index) => {
+          obj[element] = arr2[index];
+        });
+
+        // SAVE OBJECT IN LOCAL STORAGE
+        const dataFormated = JSON.stringify(obj);
+        localStorage.setItem("lika", dataFormated);
+
+        // GO TO NEXT PAGE AND
+        secondPageContainer.classList.add("hidden");
+        thirdPageContainer.classList.remove("hidden");
+      }
+    });
   });
 };
 validation();
