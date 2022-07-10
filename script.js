@@ -479,3 +479,73 @@ doneBtn.addEventListener("click", function () {
     });
   }
 });
+
+// ON PAGE REFRESH GETS DATA FROM LOCAL STORAGE AND RENDERS IT BACK
+window.addEventListener("load", function () {
+  // FIRST PAGE STORAGE, SECOND PAGE DATA STORAGE , ACTIVE CLASSES STORAGE
+  const dataforuse = JSON.parse(localStorage.getItem("lika"));
+  const dataforuse2 = JSON.parse(localStorage.getItem("lika2"));
+  const dataforuse3 = JSON.parse(localStorage.getItem("lika3"));
+
+  const labels = this.document.querySelectorAll("label");
+
+  // CHECKS IF THERE IS ANY DATA
+  if (dataforuse2) {
+    // MAKES ARR FROM SECOND PAGE VALUES
+    const arr = Object.values(dataforuse2);
+    // CHECKS WHICH FIELD WAS FILLED AND RENDERS DATA
+    if (arr[0] !== undefined) {
+      levelListTitle.textContent = arr[0];
+    }
+    if (arr[2]) {
+      if (arr[2] === 1) {
+        const curLi = this.document.querySelector(".onee");
+        curLi.classList.add("selected");
+        characterListTitle.textContent = "Nona Gaphrindashvili";
+      }
+      if (arr[2] === 2) {
+        const curLi = this.document.querySelector(".twoo");
+        curLi.classList.add("selected");
+        characterListTitle.textContent = "Mikhail Tal";
+      }
+      if (arr[2] === 3) {
+        const curLi = this.document.querySelector(".three");
+        curLi.classList.add("selected");
+        characterListTitle.textContent = "Bobby Fisher";
+      }
+      if (arr[2] === 4) {
+        const curLi = this.document.querySelector(".four");
+        curLi.classList.add("selected");
+        characterListTitle.textContent = "Magnus Carlsen";
+      }
+    }
+
+    if (arr[1] === true) {
+      radioYes.checked = true;
+    }
+
+    if (arr[1] === false) {
+      radioNo.checked = true;
+    }
+  }
+
+  // ADDS ACTIVE CLASSES FRO DROPDOWN LISTS
+  if (dataforuse3) {
+    if (dataforuse3[0]) {
+      levelListTitle.classList.add(dataforuse3[0]);
+    }
+
+    if (dataforuse3[1]) {
+      characterListTitle.classList.add(dataforuse3[1]);
+    }
+  }
+
+  //FOR  PERSONAL INFO RENDERS USERS INPUT
+  if (dataforuse) {
+    inputOne.value = dataforuse.name;
+    inputTwo.value = dataforuse.email;
+    inputThree.value = dataforuse.phone;
+    inputFour.value = Object.values(dataforuse)[3];
+    labels.forEach((el) => el.remove());
+  }
+});
